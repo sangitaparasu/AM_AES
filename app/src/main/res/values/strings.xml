@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AM_AES</string>
+    <string name="title_send">Sender</string>
+    <string name="title_receiver">Receiver</string>
+    <string name="title_msgdetail">Chat</string>
+</resources>
