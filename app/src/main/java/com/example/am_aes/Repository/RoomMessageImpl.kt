@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class RoomMessageRepository @Inject constructor(private val messageDao: MessageDao) : MessageRepository {
+class RoomMessageImpl @Inject constructor(private val messageDao: MessageDao) : MessageRepository {
 
     override suspend fun saveMessage(number: String, message: String, timestamp: Long) {
                 val messageEntity = MessageEntity(

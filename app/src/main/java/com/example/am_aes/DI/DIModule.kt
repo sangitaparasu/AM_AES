@@ -5,8 +5,8 @@ import android.content.Context
 import com.example.am_aes.Database.MessageDao
 import com.example.am_aes.Database.MessageDatabase
 import com.example.am_aes.Repository.MessageRepository
-import com.example.am_aes.Repository.RoomMessageRepository
-import com.example.am_aes.Repository.SharedPrefsMessageRepository
+import com.example.am_aes.Repository.RoomMessageImpl
+import com.example.am_aes.Repository.SharedPrefsMessageImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,12 +26,12 @@ object RepositoryModule {
     @Provides
     @Named("room")
     fun provideRoomRepository(messageDao: MessageDao): MessageRepository {
-        return RoomMessageRepository(messageDao)
+        return RoomMessageImpl(messageDao)
     }
 
     @Provides
     @Named("sharedPrefs")
     fun provideSharedPrefsRepository(@ApplicationContext context: Context): MessageRepository {
-        return SharedPrefsMessageRepository(context)
+        return SharedPrefsMessageImpl(context)
     }
 }

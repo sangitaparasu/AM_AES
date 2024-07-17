@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class SharedPrefsMessageRepository @Inject constructor(private val context: Context) : MessageRepository {
+class SharedPrefsMessageImpl @Inject constructor(private val context: Context) : MessageRepository {
     private val prefs: SharedPreferences by lazy {
         context.getSharedPreferences("EncryptedMessages", Context.MODE_PRIVATE)
     }

@@ -4,12 +4,13 @@ import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 import android.util.Base64
+import com.example.am_aes.BuildConfig
 import java.security.SecureRandom
 
 object AESUtils {
     private const val AES = "AES"
     private const val AES_MODE = "AES/CBC/PKCS7Padding"
-    private const val KEY = "ihatehumans12345"
+    private const val KEY = BuildConfig.API_KEY
     private const val IV_SIZE = 16
 
     @Throws(Exception::class)

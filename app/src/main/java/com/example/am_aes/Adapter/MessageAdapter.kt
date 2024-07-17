@@ -33,6 +33,8 @@ class MessageAdapter(private val messageList: List<MessageItem>) : RecyclerView.
         holder.messageText.text = currentItem.message
         holder.timeText.text = formatTime(currentItem.time.toLong())
         val randomColor = getRandomColor()
+        Log.d("RandomColor", "Color: $randomColor")
+
         holder.imageCardView.setCardBackgroundColor(randomColor)
         Log.d("time",currentItem.time)
         holder.itemView.setOnClickListener {

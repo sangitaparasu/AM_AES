@@ -1,3 +1,4 @@
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -18,8 +19,12 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val p = Properties()
+        p.load(project.rootProject.file("local.properties").reader())
+        val API_KEY: String = p.getProperty("API_KEY")
+        buildConfigField("String", "API_KEY", "\"$API_KEY\"")
     }
 
     buildTypes {
@@ -29,7 +34,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -40,8 +48,12 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
+
     }
+
 }
+
 
 dependencies {
 

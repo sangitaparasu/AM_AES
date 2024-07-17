@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.am_aes.Adapter.MessageAdapter
 import com.example.am_aes.Model.MessageItem
@@ -22,6 +23,7 @@ import com.example.am_aes.Utils.Resource
 import com.example.am_aes.ViewModel.SenderViewModel
 import com.example.am_aes.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -49,6 +51,12 @@ class HomeFragment : Fragment() {
 
         messageAdapter = MessageAdapter(messageList)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+               requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
         binding.recyclerView.adapter = messageAdapter
 
 

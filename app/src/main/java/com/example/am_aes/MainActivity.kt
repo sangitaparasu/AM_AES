@@ -29,11 +29,16 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard))
+                R.id.navigation_home, R.id.navigation_dashboard
+            )
+        )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -41,11 +46,11 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.navigation_notifications -> {
                     hideBottomNavigationView()
-
                     supportActionBar?.show()
                 }
+
                 else ->
-                {
+                    {
                     showBottomNavigationView()
                     supportActionBar?.hide()
                 }
@@ -53,23 +58,22 @@ class MainActivity : AppCompatActivity() {
         }
         checkAndRequestSmsPermission()
     }
+
     private fun checkAndRequestSmsPermission() {
         if (ContextCompat.checkSelfPermission(
                 this,
                 android.Manifest.permission.SEND_SMS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            requestSmsPermissionLauncher.launch(  Manifest.permission.SEND_SMS)
+            requestSmsPermissionLauncher.launch(Manifest.permission.SEND_SMS)
         }
     }
 
     private val requestSmsPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (!isGranted) {
-
                 finish()
             }
-
         }
 
     private fun hideBottomNavigationView() {
