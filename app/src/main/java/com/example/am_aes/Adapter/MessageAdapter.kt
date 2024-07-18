@@ -30,7 +30,7 @@ class MessageAdapter(private val messageList: List<MessageItem>) : RecyclerView.
         val currentItem = messageList[position]
         val firstChar = currentItem.message.firstOrNull()?.let { char ->
             if (char.isLetter()) {
-                char.toUpperCase().toString()
+                char.uppercaseChar().toString()
             } else {
                 char.toString()
             }

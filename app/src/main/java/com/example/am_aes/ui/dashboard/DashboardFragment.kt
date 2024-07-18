@@ -1,5 +1,6 @@
 package com.example.am_aes.ui.dashboard
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ class DashboardFragment : Fragment() {
     val viewModel: ReceiverViewModel by viewModels()
     private val binding get() = _binding!!
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
