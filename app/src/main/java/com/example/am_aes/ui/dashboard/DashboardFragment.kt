@@ -70,6 +70,11 @@ class DashboardFragment : Fragment() {
                         receivedMessageList.clear()
                         receivedMessageList.addAll(messageItems)
                         messageAdapter.notifyDataSetChanged()
+                        if (messageItems.isEmpty()) {
+                            binding.rectextEmptyView.visibility = View.VISIBLE
+                        } else {
+                            binding.rectextEmptyView.visibility = View.GONE
+                        }
                     }
 
                 }

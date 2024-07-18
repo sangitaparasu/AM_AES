@@ -82,6 +82,12 @@ class HomeFragment : Fragment() {
                         messageList.clear()
                         messageList.addAll(messageItems)
                         messageAdapter.notifyDataSetChanged()
+
+                        if (messageItems.isEmpty()) {
+                            binding.textEmptyView.visibility = View.VISIBLE
+                        } else {
+                            binding.textEmptyView.visibility = View.GONE
+                        }
                     }
 
                 }

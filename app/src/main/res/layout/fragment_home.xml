@@ -12,17 +12,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
        />
+    <TextView
+        android:id="@+id/textEmptyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No messages found."
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_gravity="bottom|right"
         android:id="@+id/fabAddMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:src="@drawable/chat"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="chat"
+        android:layout_gravity="bottom|right"
+        app:layout_anchor="@id/recyclerView"
+        app:layout_anchorGravity="bottom|end" />
 
-         />
 
 
 </FrameLayout>
