@@ -18,6 +18,4 @@ tools:context=".ui.dashboard.DashboardFragment">
     android:visibility="gone"
     android:layout_gravity="center"/>
 
-
-
 </FrameLayout>
