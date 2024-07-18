@@ -17,8 +17,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    
 }
 
 rootProject.name = "AM_AES"
 include(":app")
- 
+

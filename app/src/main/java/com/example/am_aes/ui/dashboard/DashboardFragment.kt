@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.am_aes.Adapter.MessageAdapter
 import com.example.am_aes.Model.MessageItem
@@ -38,6 +39,12 @@ class DashboardFragment : Fragment() {
 
         messageAdapter = MessageAdapter(receivedMessageList)
         binding.recvrecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recvrecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
         binding.recvrecyclerView.adapter = messageAdapter
         viewModel.getMessages()
         viewModel.receivedMessages.observe(viewLifecycleOwner) { resource ->

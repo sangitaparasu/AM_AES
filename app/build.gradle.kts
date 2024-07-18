@@ -1,13 +1,13 @@
 import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.navigation.safeargs)
-    // alias(libs.plugins.kotlin.hilt.android)
     id("kotlin-parcelize")
     id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
-}
+    alias(libs.plugins.hilt.android)
+    }
 
 android {
     namespace = "com.example.am_aes"
@@ -21,10 +21,19 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val p = Properties()
-        p.load(project.rootProject.file("local.properties").reader())
-        val API_KEY: String = p.getProperty("API_KEY")
-        buildConfigField("String", "API_KEY", "\"$API_KEY\"")
+        val properties = Properties()
+        val localPropertiesFile = project.rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            properties.load(localPropertiesFile.reader())
+            val apiKey: String? = properties.getProperty("API_KEY")
+            if (apiKey != null) {
+                buildConfigField("String", "API_KEY", "\"$apiKey\"")
+            } else {
+                throw GradleException("API_KEY not found in local.properties")
+            }
+        } else {
+            throw GradleException("local.properties file not found")
+        }
     }
 
     buildTypes {

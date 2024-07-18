@@ -28,7 +28,14 @@ class MessageAdapter(private val messageList: List<MessageItem>) : RecyclerView.
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val currentItem = messageList[position]
-        holder.userProfileImage.text = currentItem.message.first().toString()
+        val firstChar = currentItem.message.firstOrNull()?.let { char ->
+            if (char.isLetter()) {
+                char.toUpperCase().toString()
+            } else {
+                char.toString()
+            }
+        } ?: ""
+        holder.userProfileImage.text =firstChar
         holder.displayNameText.text = currentItem.number
         holder.messageText.text = currentItem.message
         holder.timeText.text = formatTime(currentItem.time.toLong())
@@ -63,8 +70,8 @@ class MessageAdapter(private val messageList: List<MessageItem>) : RecyclerView.
         val imageCardView: CardView = itemView.findViewById(R.id.imageCardView)
     }
     private fun getRandomColor(): Int {
-        val low = 0
-        val high = 10
+        val low = 64
+        val high = 192
         val r = Random.nextInt(low, high)
         val g = Random.nextInt(low, high)
         val b = Random.nextInt(low, high)
