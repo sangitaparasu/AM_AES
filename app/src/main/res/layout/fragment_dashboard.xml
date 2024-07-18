@@ -17,5 +17,4 @@ tools:context=".ui.dashboard.DashboardFragment">
     android:text="No messages found."
     android:visibility="gone"
     android:layout_gravity="center"/>
-
 </FrameLayout>
